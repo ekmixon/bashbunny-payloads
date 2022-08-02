@@ -37,14 +37,14 @@ class RequestServer(BaseHTTPRequestHandler):
 
         if filename == 'EOF':
             data = self.rfile.read(content_length)
-            with open(CURR_DIR + "/loot/{}".format(filename), "w+") as f:
+            with open(CURR_DIR + f"/loot/{filename}", "w+") as f:
                 f.write(data)
                 f.close()
                 self.end_headers()
                 IS_RUNNING = False
         else:
             data = self.rfile.read(content_length)
-            with open(CURR_DIR + "/loot/{}.txt".format(filename), "w+") as f:
+            with open(CURR_DIR + f"/loot/{filename}.txt", "w+") as f:
                 f.write(data)
                 f.close()
         self._set_headers()
